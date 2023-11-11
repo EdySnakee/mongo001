@@ -1,0 +1,10 @@
+use("base_store")
+
+db.inventario.updateOne({_id:4},{
+
+  // OPERADOR PARA ARRAYS agrega elementos al final de un array
+
+  $push:{
+    tags: "NUEVO"
+  }
+})

@@ -1,0 +1,17 @@
+use ("base_store")
+
+
+db.productos.updateOne(
+  // query
+  { _id:1},
+  // change => operatos
+  {
+
+    // inc actualiza numeros, incrementa el numero con el valor,
+    // si el valor anterior era 100 con este query sera de 107
+
+    $inc: {
+      price: 7,
+    }
+  }
+  )

@@ -1,0 +1,30 @@
+use("base_store")
+
+db.productos.drop()
+db.productos.insertMany([
+  {
+    _id: 1,
+  name: "product 1",
+  price: 1111
+  },
+  {
+    _id: 2,
+  name: "product 2",
+  price: 2222
+  },
+  {
+    _id: 3,
+  name: "product 3",
+  price: 3333
+  },
+  {
+    _id: 4,
+  name: "product 4",
+  price: 4444
+  },
+],{
+  // AHORA NO SIGUE EL ORDEN Y SI ENCUANTRA UN ERRORO, CONTINUA CON LOS REGISTRO
+  ordered: false
+})
+
+db.productos.find()

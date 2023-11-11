@@ -1,0 +1,8 @@
+use ("base_store")
+
+db.productos.updateOne({_id: ObjectId("654fac43ab8d1b8ab381df89")},
+{
+  $inc: {
+    price: 1111
+  }
+})

@@ -1,0 +1,10 @@
+use("base_store")
+
+  // Esto elimina el producto con el id
+// db.products.deleteOne({_id:1})
+
+// Esto elimina todos las propiedades del producto que sean ==
+// db.products.deleteMany({ price:100})
+
+// Esto elimina todos los documentos de la coleccion
+db.products.drop()

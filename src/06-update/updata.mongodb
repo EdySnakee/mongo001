@@ -1,0 +1,15 @@
+use ("base_store")
+
+
+db.productos.updateOne(
+  // query
+  { _id:4},
+  // change => operatos
+  {
+    $set: {
+      name: 'cambio de nombre',
+      price: 6666,
+      tags: ['A', 'B', 'C']
+    }
+  }
+  )

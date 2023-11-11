@@ -1,0 +1,37 @@
+use ("sample_training")
+
+
+// AGREGAR UN ATRIBUTO=>
+
+// db.zips.updateMany(
+//   { city:"CLEVELAND" },
+//   //updata - operator
+//   {
+//     $set: {
+//       nuevo: "nuevo"
+//     }
+//   }
+// )
+
+// // RENAME UN ATRIBUTO
+// db.zips.updateMany(
+//   { city:"CLEVELAND" },
+//   //updata - operator
+//   {
+//     $set: {
+//       VIEJO: "nuevo"
+//     }
+//   }
+// )
+
+
+// UNSET REMOVIER UN ATRIBUTO
+db.zips.updateMany(
+  { city:"CLEVELAND" },
+  //updata - operator
+  {
+    $unset: {
+      nuevo: ""
+    }
+  }
+)

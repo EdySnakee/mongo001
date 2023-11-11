@@ -1,0 +1,19 @@
+use("base_store")
+
+// db.inventario.updateMany({},{
+//   // OPERADOR PARA ARRAYS remueve elementos
+//   $pull:{
+//     tags: "book"
+//   }
+// })
+
+
+// REMOVEMOS VARIOS ELEMENTOS
+db.inventario.updateMany({},{
+  // OPERADOR PARA ARRAYS remueve elementos
+  $pull:{
+    tags: {
+      $in: ["school", "appliance"]
+    }
+  }
+})
