@@ -1,0 +1,14 @@
+use("base_store")
+
+// db.inventory.find({qty:20} ) ESlo mismo pero de manera explicita ==>
+
+    // db.inventory.find({qty: {$eq:20}} )
+
+//Consultas para sub documentos
+    // db.inventory.find({"item.name": "ab"} )
+
+
+
+// USANDO $ne
+// Busca todos los operadores que NO sean iguales a 20
+db.inventory.find({qty: { $ne:20}})
