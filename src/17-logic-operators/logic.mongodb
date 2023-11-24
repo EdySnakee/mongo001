@@ -1,0 +1,62 @@
+use("sample_training")
+
+// IMPLICITO ->
+// db.inspections.find({
+//   sector: "Tax Preparers - 891",
+//   result: "Unable to Locate"
+// }).count()
+
+
+// '$and'  EXPLICITO
+// $and = [{},{},{},{}] ->
+
+// db.inspections.find({
+//   $and: [
+//     {sector: "Tax Preparers - 891"},
+//     {result: "Unable to Locate"}
+//   ]
+// }).count()
+
+
+// '$or' que tengan uno o el otro ->
+// $or = [{},{},{},{}] ->
+
+// db.inspections.find({
+//   $or: [
+//     {sector: "Tax Preparers - 891"},
+//     {result: "Unable to Locate"}
+//   ]
+// }).count()
+
+
+
+// '$nor' que NO tengan uno o otro key-valor ->
+// $nor = [{},{},{},{}] ->
+
+// db.inspections.find({
+//   $nor: [ //filtros
+//     // key      valor
+//     {sector: "Tax Preparers - 891"},
+//     {result: "Unable to Locate"}
+//   ]
+// }).count()
+
+// ejemplos 2 ->
+// db.inspections.find({
+//   $nor: [ //filtros
+//     // key      valor
+//     {result: "No Violation Issued"},
+//     {result: "Unable to Locate"}
+//   ]
+// },{
+//   // Agregando projections
+//   result: 1,
+//   _id:0
+// })
+
+
+
+// Negacion directa al valor- $not = {}
+db.inspections.find({
+  result: { $not:{ $regex: /Unable to Locate/}}
+})

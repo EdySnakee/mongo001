@@ -1,0 +1,43 @@
+use("base_store")
+
+// OPERADORES DE Array|->
+
+//  $in -> funciona para values & arrays, busca ->
+// db.inventory.find({ qty: { $in: [20,25]}})
+
+// se usa para busquedas en array con coincidencias ->
+// db.inventory.find({ tags: { $in: ["book","electronics"]}})
+
+
+// LO CONTRARIO SERIA '$nin', que no estes esos elementos ->
+// String ->
+// db.inventory.find({ tags: { $nin: ["book","electronics"]}})
+// num ->
+// db.inventory.find({ qty: { $nin: [20,25]}})
+
+
+
+// La busqueda por array, tiene que ser espesifica
+// db.inventory.find({tags: ["school","book"]}) //CORRECT orden
+// db.inventory.find({tags: ["book","school"]}) //ERROR
+
+
+
+// '$all'-> que tenga ambos, sin importar el orden ->
+// db.inventory.find({tags: {$all: ["book","school"]}})
+
+
+// '$size'-> la cantidad de los elementos ->
+// db.inventory.find({tags: {$size: 2}})
+
+
+// '$elementMatch'-> Busquedas espesificas ->
+// db.survey.find({results: {$elemMatch: {product: "xyz"}}})
+
+// Podemos ser mas espesificos ->
+db.survey.find({
+  results:{
+    $elemMatch: {product: "xyz",
+    score: { $gte: 7} //Mayor a 7
+  }}
+})

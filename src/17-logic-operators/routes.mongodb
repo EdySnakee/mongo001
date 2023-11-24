@@ -1,0 +1,28 @@
+use("sample_training")
+
+
+// Encontramos por valor ->
+// db.routes.find({airplane:"E70"})
+
+// filtramos por valor usando $or ->
+// db.routes.find({
+//   $or: [
+//     {dst_airport: "BOG"},
+//     {src_airport: "BOG"}
+//   ]
+// })
+
+
+// uniendo busquedas $and y $or anidado->
+db.routes.find({
+  $and: [
+    { airplane: "E70" },
+    {
+      $or: [{ dst_airport: "BOG" },
+      { src_airport: "BOG" }],
+    },
+  ],
+}).count() // 14
+
+// En este ejemplo en vuelo "E70" paso por el
+//  aeropuerto de "BOG" == x veces (resp)

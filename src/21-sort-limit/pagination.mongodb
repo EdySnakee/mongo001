@@ -1,0 +1,7 @@
+use("base_store")
+
+// paginacion saltamos los primeros dos doc, y limitamos la respuesta a 2
+db.categories
+.find()
+.skip(0) //saltamos
+.limit(2) // limitamos

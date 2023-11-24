@@ -1,0 +1,32 @@
+use("sample_training")
+
+//-> traer el primer elemento de la lista
+// db.trips.findOne()
+
+
+//-> peticion basica a subDocumento
+// db.trips.find({"start station location.type": "Point"})
+
+
+//Accederemos a una posicionde un array a los atributos del doc
+// db.companies.find(
+//   //aca buscamos en i = 0, donde apellido es = Zuckerberg
+//   { "relationships.0.person.last_name": "Zuckerberg"},
+//   {
+//     name: 1,
+//     relationships: 1
+//   })
+
+
+  //aca buscamos cuantas compañias, tienen a algien relacionado con el nombre 'MARK'
+db.companies.find({
+  relationships: {
+    $elemMatch: {
+      "person.first_name" : "Mark"
+    }
+  }
+},
+  {
+    name: 1,
+    relationships: 1
+  }).count()

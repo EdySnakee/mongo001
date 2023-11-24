@@ -1,0 +1,29 @@
+// EL aggregate Framework es un motos más grande,
+// que generalmente se usa para consultas más grandes
+
+use("sample_airbnb")
+
+// sin agg
+// db.listingsAndReviews.find({
+//   amenities: "Wifi"
+// },{
+//   price:1,
+//   amenities: 1
+// })
+
+
+// con aggregate [],[],[]
+// db.listingsAndReviews.aggregate([
+//   { $match: { amenities: "Wifi"} }, //find
+//   { $project: { price:1 }} //project
+// ])
+
+
+// agrupomas por pais, todas con WIFI
+db.listingsAndReviews.aggregate([
+  { $match: { amenities: "Wifi"} }, //find
+  { $project: { address:1 }}, //project
+  { $group: {_id: "$address.country", count: {
+    $sum:1
+  }}}
+])

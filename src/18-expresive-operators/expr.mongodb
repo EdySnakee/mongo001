@@ -1,0 +1,12 @@
+use("base_store")
+
+// basic
+// db.monthlyBudget.find({ spent: {$gte:100}})
+
+// expresiva,
+db.monthlyBudget.find({
+  $expr: {
+    $gte: ["$spent", "$budget"]
+  // regresa los doc donde $spent supera a $budget
+  }
+})

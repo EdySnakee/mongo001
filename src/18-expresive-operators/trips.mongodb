@@ -1,0 +1,20 @@
+use("sample_training")
+
+// comparar con $eq
+// db.trips.find({
+//   $expr: {
+//     // iniciar y finalizar en el mismo punto, (condición)
+//     $eq: ["$start station id", "$end station id"]
+//   }
+// }).count()
+
+
+// comparar con $eq y aumentando $and
+db.trips.find({
+  $expr: {
+    $and: [
+      {$eq: ["$start station id", "$end station id"]},
+      {$gte: ["$tripduration", 1200]} // y sea mayor o =  a 1200
+    ]
+  }
+}).count()

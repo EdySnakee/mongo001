@@ -1,0 +1,15 @@
+use("sample_training")
+
+// 1 = orden acendente 0-10 , a-z
+// db.zips.find({pop:{$gte:100}})
+// .sort({pop:1})
+
+// -1 = orden desendente 10-0 , z-a
+// db.zips.find({pop:{$gte:100}})
+// .sort({pop:-1})
+
+
+// LIMITANDO LA RESPUESTA ORGANIZADA
+db.zips.find({pop:{$gte:100}})
+.sort({pop:1})
+.limit(2) // limite
